@@ -1,0 +1,12 @@
+.wrap {
+    height: 100vh;
+    width: 100%;
+
+    &_layout {
+        &_sider {
+            box-shadow: 0 2px 8px 0 #00000026;
+            position: relative;
+            z-index: 999;
+        }
+    }
+}
