@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-export default class index extends Component {
+export default class Control extends PureComponent {
   render() {
     return (
-      <div>index</div>
+      <div>Control</div>
     )
   }
 }
