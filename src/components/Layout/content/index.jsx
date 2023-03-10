@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Tabs, Layout } from 'antd'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { routeConfig, defaultTag } from '../../../modules/control/router'
-import BreadCrumb from '../../BreadCrumb'
+// import BreadCrumb from '../../BreadCrumb'
 import style from './index.module.scss'
 const { TabPane } = Tabs
 
@@ -38,12 +38,12 @@ class Contents extends Component {
         const { panes } = this.state
         const selectPanes = panes.filter(item => item.key === activeKey)
         const path = selectPanes[0].path
-        this.getBreadCrumbList(selectPanes[0])
+        // this.getBreadCrumbList(selectPanes[0])
         this.props.history.replace(path)
         this.setState({ activeKey })
     }
     onEdit = (targetKey, action) => {
-        this[action][targetKey]
+        this[action](targetKey)
     }
     remove = targetKey => {
         let activeKey = this.state.activeKey;
@@ -73,11 +73,14 @@ class Contents extends Component {
         return (
             <Layout.Content className={style.wrap}>
                 <div className={style.wrap_bread}>
-                    <BreadCrumb
+                    {/* <BreadCrumb
                         BreadCrumbList_={this.state.BreadCrumbList_}
                         onRef={(ref) => this.breadCrumb = ref}
                         editTabs={(e) => this.setState({ activeKey: e })}
-                    />
+                    /> */}
+                    <div>
+                        面包屑
+                    </div>
                 </div>
                 <Tabs
                     hideAdd
@@ -89,7 +92,7 @@ class Contents extends Component {
                 >
                     {
                         this.state.panes.map(pane => (
-                            <TabPane tab={pane.title} key={pane.key} closable={pane.closable} forceRender>
+                            <TabPane tab={pane.title} key={pane.key} closable={pane.closed} forceRender>
                                 <div style={{ padding: '54px 0 0 24px' }}>
                                     <div style={{ height: 'calc(100vh - 170px)', overflowY: 'scroll', paddingRight: '24px' }}>
                                         <Switch>

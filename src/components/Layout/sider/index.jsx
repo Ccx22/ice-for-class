@@ -25,7 +25,6 @@ export default class SiderContent extends PureComponent {
         <Menu
           defaultSelectedKeys={menuConfig.defaultOpenKeys}
           defaultOpenKeys={menuConfig.defaultOpenKeys}
-          // inlineCollapsed={this.state.collapsed}
           mode="inline"
           theme='="light'
         >

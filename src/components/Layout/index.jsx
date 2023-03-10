@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import SiderContent from './sider'
 import HeaderContent from './header'
-// import ContainerContent from './content'
+import ContainerContent from './content'
+import Folder from '../Folder'
 import { Layout } from 'antd'
 import style from './index.module.scss'
 class Layouts extends PureComponent {
@@ -14,7 +15,7 @@ class Layouts extends PureComponent {
     }
     setRoute = (e, breadCrumb) => {
         this.props.history.push(e)
-        // this.TabsNav.getStatus(e)
+        this.TabsNav.getStatus(e)
         // this.TabsNav.getBreadCrumbList(breadCrumb)
     }
     render() {
@@ -29,7 +30,9 @@ class Layouts extends PureComponent {
                         style={{ backgroundColor: '#fff' }}
                     >
                         <SiderContent setRoute={this.setRoute} />
+                        <Folder setCollapsed={(e) => this.setState({ isCollapsed: e })} />
                     </Layout.Sider>
+                    <ContainerContent onRef={(ref) => this.TabsNav = ref} />
                 </Layout>
             </Layout>
         )
