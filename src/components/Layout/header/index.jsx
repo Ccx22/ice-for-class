@@ -8,11 +8,12 @@ class HeaderContent extends PureComponent {
             padding: '0 22px',
             height: '48px',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            color:'white'
         }
         return (
             <Layout.Header style={headerStyle}>
-                header
+                Header_Logo
             </Layout.Header>
         )
     }

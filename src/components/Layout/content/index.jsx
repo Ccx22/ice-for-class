@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Tabs, Layout } from 'antd'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { routeConfig, defaultTag } from '../../../modules/control/router'
-// import BreadCrumb from '../../BreadCrumb'
+import BreadCrumb from '../../BreadCrumb'
 import style from './index.module.scss'
 const { TabPane } = Tabs
 
@@ -32,14 +32,14 @@ class Contents extends Component {
         }
     }
     getBreadCrumbList = (breadCrumb) => {
-        this.breadCrumb.getBreadCrumbList(breadCrumb)
+        this.breadRef.getBreadCrumbList_(breadCrumb)
     }
     onChange = activeKey => {
         const { panes } = this.state
         const selectPanes = panes.filter(item => item.key === activeKey)
         const path = selectPanes[0].path
-        // this.getBreadCrumbList(selectPanes[0])
         this.props.history.replace(path)
+        this.getBreadCrumbList(selectPanes[0])
         this.setState({ activeKey })
     }
     onEdit = (targetKey, action) => {
@@ -73,14 +73,10 @@ class Contents extends Component {
         return (
             <Layout.Content className={style.wrap}>
                 <div className={style.wrap_bread}>
-                    {/* <BreadCrumb
-                        BreadCrumbList_={this.state.BreadCrumbList_}
-                        onRef={(ref) => this.breadCrumb = ref}
+                    <BreadCrumb
+                        onRef={(ref) => this.breadRef = ref}
                         editTabs={(e) => this.setState({ activeKey: e })}
-                    /> */}
-                    <div>
-                        面包屑
-                    </div>
+                    />
                 </div>
                 <Tabs
                     hideAdd
@@ -105,7 +101,6 @@ class Contents extends Component {
                                         </Switch>
                                     </div>
                                 </div>
-
                             </TabPane>
                         ))
                     }

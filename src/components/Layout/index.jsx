@@ -13,10 +13,11 @@ class Layouts extends PureComponent {
             isCollapsed: false
         }
     }
+
     setRoute = (e, breadCrumb) => {
         this.props.history.push(e)
-        this.TabsNav.getStatus(e)
-        // this.TabsNav.getBreadCrumbList(breadCrumb)
+        this.TabsNav.getStatus(e,breadCrumb)
+        this.TabsNav.getBreadCrumbList(breadCrumb)
     }
     render() {
         const { isCollapsed } = this.state

@@ -4,8 +4,8 @@ import { menuConfig } from '../../modules/control/router'
 import { withRouter } from 'react-router-dom'
 const { menuList } = menuConfig()
 class BreadCrumbs extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             breadCrumbList: menuList,
             breadCrumbList_: {},
@@ -15,7 +15,7 @@ class BreadCrumbs extends Component {
     componentDidMount() {
         this.props.onRef(this)
     }
-    getBreadCrumbList = (breadCrumb) => {
+    getBreadCrumbList_ = (breadCrumb) => {
         this.setState({
             isDefault: false,
             breadCrumbList_: breadCrumb
@@ -36,28 +36,23 @@ class BreadCrumbs extends Component {
             )
         }
         const dealBread_ = () => {
-            // const { breadcrumb, title, path, key } = this.state.breadCrumbList_
-            return (
-                <div>
-                    123
-                </div>
-            )
-            // const RENDER_JSX = breadcrumb.map((item, index) => {
-            //     if (item === title) {
-            //         return (
-            //             <Breadcrumb.Item key={index + 2} style={{ cursor: 'pointer' }} onClick={() => jump(path, key)}>
-            //                 {item}
-            //             </Breadcrumb.Item>
-            //         )
-            //     } else {
-            //         return (
-            //             <Breadcrumb.Item key={index + 2}>
-            //                 {item}
-            //             </Breadcrumb.Item>
-            //         )
-            //     }
-            // })
-            // return RENDER_JSX
+            const { breadcrumb, title, path, key } = this.state.breadCrumbList_
+            const RENDER_JSX = breadcrumb.map((item, index) => {
+                if (item === title) {
+                    return (
+                        <Breadcrumb.Item key={index + 2} style={{ cursor: 'pointer' }} onClick={() => jump(path, key)}>
+                            {item}
+                        </Breadcrumb.Item>
+                    )
+                } else {
+                    return (
+                        <Breadcrumb.Item key={index + 2}>
+                            {item}
+                        </Breadcrumb.Item>
+                    )
+                }
+            })
+            return RENDER_JSX
         }
         const jump = (path, key) => {
             if (typeof path !== 'undefined') {
@@ -74,9 +69,9 @@ class BreadCrumbs extends Component {
                             {breadCrumbList[0].isSub ? dealBread(breadCrumbList[0].children[0]) : null}
                             {breadCrumbList[0].children[0].isSub ? dealBread(breadCrumbList[0].children[0].children[0]) : null}
                         </Breadcrumb> :
-                        <BreadCrumbs separator=">">
+                        <Breadcrumb separator=">">
                             {dealBread_()}
-                        </BreadCrumbs>
+                        </Breadcrumb>
                 }
             </Fragment>
         )
