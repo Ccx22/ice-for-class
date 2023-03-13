@@ -23,7 +23,7 @@ export default class SiderContent extends PureComponent {
     return (
       <div>
         <Menu
-          defaultSelectedKeys={menuConfig.defaultOpenKeys}
+          defaultSelectedKeys={menuConfig.defaultSelectedKeys}
           defaultOpenKeys={menuConfig.defaultOpenKeys}
           mode="inline"
           theme='="light'
@@ -53,7 +53,7 @@ export default class SiderContent extends PureComponent {
                             </span>
                           }
                         >
-                          {
+                          { 
                             item1.children.length > 0 ?
                               item1.children.map(item2 =>
                               (
