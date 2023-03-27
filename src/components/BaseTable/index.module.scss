@@ -1,0 +1,15 @@
+.wrap {
+    :global {
+        .ant-table-thead {
+            >tr {
+                >th {
+                    background-color: #4578f2;
+
+                    >span {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
