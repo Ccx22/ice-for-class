@@ -24,7 +24,7 @@ export class router extends PureComponent {
                 {this.routes.map((route) => (
                     <Route {...route} key={route.path} />
                 ))}
-                <Redirect to='/control' />
+                <Redirect to='/login' />
             </Switch>
         )
     }

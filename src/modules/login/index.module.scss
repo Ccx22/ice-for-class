@@ -1,0 +1,62 @@
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-image: url('../../assets/image/login_bg1.png');
+    background-size: 100% 100%;
+
+
+    &_title {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 6.7%;
+
+        >div {
+            color: #FFFFFF;
+            font-family: PingFang SC;
+            letter-spacing: 0px;
+            font-weight: medium;
+            line-height: normal;
+        }
+
+        >div:nth-child(1) {
+            font-size: 50px;
+            margin-bottom: 24px;
+        }
+
+        >div:nth-child(2) {
+
+            font-size: 50px;
+            margin-bottom: 24px;
+        }
+
+        >div:nth-child(3) {
+            font-size: 16px;
+
+        }
+    }
+
+    &_login {
+        width: 430px;
+        height: 545px;
+        background-image: url('../../assets/image/login_border.png');
+        background-size: 100% 100%;
+        position: fixed;
+        right: 7.7%;
+        top: 19.7%;
+        box-sizing: border-box;
+        padding: 90px 30px;
+
+        &_title {
+            color: #1890FF;
+            font-family: PingFang SC;
+            font-weight: medium;
+            font-size: 20px;
+            letter-spacing: 2.5px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+    }
+}
