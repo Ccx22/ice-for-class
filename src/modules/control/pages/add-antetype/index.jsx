@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import {  Input } from 'antd';
-import Template from '../../../../components/Template'
-import BaseTable from '../../../../components/BaseTable'
-import SearchForm from '../../../../components/SearchForm'
+import { BaseTemplet, BaseSearch, BaseTable } from '@/baseui'
 export default class AddAntetype extends Component {
   constructor() {
     super()
@@ -26,26 +23,6 @@ export default class AddAntetype extends Component {
       ],
       loading: false
     }
-    this.columns = [
-      {
-        title: '序号',
-        dataIndex: 'key',
-        align: 'center',
-        width: 80
-      },
-      {
-        title: '名称',
-        dataIndex: 'name',
-        align: 'center',
-        width: 150
-      },
-      {
-        title: '地址',
-        dataIndex: 'address',
-        align: 'center',
-        width: 150
-      }
-    ]
     this.formSet = [
       {
         key: '1',
@@ -54,7 +31,9 @@ export default class AddAntetype extends Component {
         fieldValue: 'name',
         placeholder: '请输入',
         initialValue: '初始值',
-        col_span: 6,
+        labelCol: 5,
+        wrapperCol: 19,
+        input_width: '100%',
         rules: [
           {
             required: true,
@@ -69,8 +48,9 @@ export default class AddAntetype extends Component {
         fieldValue: 'sex',
         placeholder: '请选择',
         initialValue: 'lucy',
-        col_span: 6,
-        select_width: '120px',
+        labelCol: 5,
+        wrapperCol: 19,
+        select_width: '100%',
         rules: [
           {
             required: true,
@@ -90,45 +70,57 @@ export default class AddAntetype extends Component {
           }
         ],
       },
+    ]
+    this.columns = [
       {
-        key: '3',
-        custom: true,
-        label:'自定义',
-        fieldValue: 'custom',
-        initialValue:'123',
-        col_span: 6,
-        rules: [
-          {
-            required: true,
-            message: '输入点什么呗!',
-          }
-        ],
-        customJsx: (
-          <Input placeholder='222' />
-        )
+        title: '序号',
+        dataIndex: 'index',
+        align: 'center',
+        width: 80
+      },
+      {
+        title: '名称',
+        editable: true,//可编辑
+        dataIndex: 'name',
+        align: 'center',
+        width: 150
+      },
+      {
+        title: '地址',
+        dataIndex: 'address',
+        align: 'center',
+        width: 150
       }
     ]
+
+  }
+  handleSearch = (value) => {
+    alert(`搜索字段：${JSON.stringify(value)}`)
+  }
+  handleSave = (newData) => {
+    this.setState({ dataSource: newData })
   }
   render() {
     return (
       <div>
-        <Template title='搜索表单'>
-          <SearchForm
+        <BaseTemplet title='条件查询'>
+          <BaseSearch
             searchPosition={0}
             searchTitle='查询'
             resetTitle='重置'
+            labelAlign='left'
             formSet={this.formSet}
+            handleSearch={this.handleSearch}
           />
-        </Template>
-        <Template title='标题'>
+        </BaseTemplet>
+        <BaseTemplet title='查询结果'>
           <BaseTable
             dataSource={this.state.dataSource}
-            loading={this.state.loading}
             columns={this.columns}
-            pagination
-            rowSelection
+            loading={this.state.loading}
+            handleSave={this.handleSave}
           />
-        </Template>
+        </BaseTemplet>
       </div>
     )
   }

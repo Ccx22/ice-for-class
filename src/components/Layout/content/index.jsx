@@ -17,7 +17,7 @@ class Contents extends Component {
     }
     componentDidMount() {
         this.props.onRef(this)
-        this.props.history.replace('/control/add-antetype')
+        this.props.history.replace('/control/home')
     }
     getStatus = (e) => {
         let { panes } = this.state

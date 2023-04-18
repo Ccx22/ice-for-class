@@ -1,0 +1,15 @@
+.edit-cell-bg {
+    /* color: #4578f2; */
+    /* background-color: rgb(136, 231, 136); */
+}
+.editable-cell {
+    position: relative;
+}
+.editable-cell-value-wrap {
+    padding: 5px 12px;
+}
+.editable-row:hover .editable-cell-value-wrap {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 4px 11px;
+}

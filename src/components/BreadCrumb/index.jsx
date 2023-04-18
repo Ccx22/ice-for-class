@@ -67,7 +67,7 @@ class BreadCrumbs extends Component {
                         <Breadcrumb separator=">">
                             {dealBread(breadCrumbList[0])}
                             {breadCrumbList[0].isSub ? dealBread(breadCrumbList[0].children[0]) : null}
-                            {breadCrumbList[0].children[0].isSub ? dealBread(breadCrumbList[0].children[0].children[0]) : null}
+                            {typeof breadCrumbList[0].children !== 'undefined' && breadCrumbList[0].children[0].isSub ? dealBread(breadCrumbList[0].children[0].children[0]) : null}
                         </Breadcrumb> :
                         <Breadcrumb separator=">">
                             {dealBread_()}

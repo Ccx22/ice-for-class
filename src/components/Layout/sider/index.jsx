@@ -30,60 +30,73 @@ export default class SiderContent extends PureComponent {
         >
           {
             menuConfig.menuList.map((item) => (
-              <SubMenu
-                disabled={item.disabled}
-                key={item.key}
-                title={
-                  <span>
-                    <Icon style={{ fontSize: '15px' }} type={item.icon} />
-                    <span style={{ fontSize: '15px' }}>{item.title}</span>
-                  </span>
-                }
-              >
-                {
-                  item.children.map((item1) => (
-                    item1.isSub ?
-                      (
-                        <SubMenu
-                          key={item1.key}
-                          title={
-                            <span>
-                              <Icon type={item1.icon} />
-                              <span>{item1.title}</span>
-                            </span>
-                          }
-                        >
-                          { 
-                            item1.children.length > 0 ?
-                              item1.children.map(item2 =>
-                              (
-                                <Menu.Item
-                                  disabled={item2.disabled}
-                                  key={item2.key}
-                                  onClick={() => {
-                                    this.selectMenuItem(item, item1, item2)
-                                  }}
-                                >
-                                  {item2.title}
-                                </Menu.Item>
-                              )) : null
-                          }
-                        </SubMenu>
-                      ) :
-                      (
-                        <Menu.Item
-                          disabled={item1.disabled}
-                          key={item1.key}
-                          onClick={() => {
-                            this.selectMenuItem(item, item1)
-                          }}
-                        >
-                          {item1.title}
-                        </Menu.Item>
-                      )
-                  ))
-                }
-              </SubMenu>
+              item.isSub ?
+                <SubMenu
+                  disabled={item.disabled}
+                  key={item.key}
+                  title={
+                    <span>
+                      {item.icon ? <Icon type={item.icon} /> : null}
+                      <span >{item.title}</span>
+                    </span>
+                  }
+                >
+                  {
+                    item.children.map((item1) => (
+                      item1.isSub ?
+                        (
+                          <SubMenu
+                            key={item1.key}
+                            title={
+                              <span>
+                                {item1.icon ? <Icon type={item1.icon} /> : null}
+                                <span>{item1.title}</span>
+                              </span>
+                            }
+                          >
+                            {
+                              item1.children.length > 0 ?
+                                item1.children.map(item2 =>
+                                (
+                                  <Menu.Item
+                                    disabled={item2.disabled}
+                                    key={item2.key}
+                                    onClick={() => {
+                                      this.selectMenuItem(item, item1, item2)
+                                    }}
+                                  >
+                                    {item2.icon ? <Icon type={item2.icon} /> : null}
+                                    <span>{item2.title}</span>
+                                  </Menu.Item>
+                                )) : null
+                            }
+                          </SubMenu>
+                        ) :
+                        (
+                          <Menu.Item
+                            disabled={item1.disabled}
+                            key={item1.key}
+                            onClick={() => {
+                              this.selectMenuItem(item, item1)
+                            }}
+                          >
+                            {item1.icon ? <Icon type={item1.icon} /> : null}
+                            <span>{item1.title}</span>
+                          </Menu.Item>
+                        )
+                    ))
+                  }
+                </SubMenu> :
+                <Menu.Item
+                  disabled={item.disabled}
+                  key={item.key}
+                  onClick={() => {
+                    this.selectMenuItem(item)
+                  }}
+                >
+                  {item.icon ? <Icon type={item.icon} /> : null}
+                  <span>{item.title}</span>
+                </Menu.Item>
             ))
           }
         </Menu>

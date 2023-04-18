@@ -19,7 +19,7 @@ class Login extends PureComponent {
       <div className={style.wrap}>
         <div className={style.wrap_title}>
           <div>Hi,你好！</div>
-          <div> 欢迎进入协同办公平台</div>
+          <div> 欢迎进入XX办公平台</div>
           <div> Welcome to the collaborative office platform of the centralized operation Product Department</div>
         </div>
         <div className={style.wrap_login}>
